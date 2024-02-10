@@ -1,0 +1,26 @@
+{
+    "name": "azstorage",
+    "version": "1.0.0",
+    "description": "Azure Storage Module",
+    "main": "cd app && npm i && npm run build && cd ../api && npm i && npm run build && func start --typescript --verbose",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "visualize": "cd / && struct -i . -o app.tree"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AZDevHub/azStorage.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/AZDevHub/azStorage/issues"
+    },
+    "homepage": "https://github.com/AZDevHub/azStorage#readme",
+    "dependencies": {
+        "tree-cli": "^0.6.7"
+    },
+    "engines": {
+        "node": ">=18.10.3 < 21.0.0"
+    }
+}

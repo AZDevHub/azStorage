@@ -1,2 +1,1 @@
-# azStorage
-Azure Storage APIs
+# azFileStorage

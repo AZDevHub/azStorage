@@ -1,0 +1,49 @@
+/home/alexz/git-repos/azStorage/app
+├── app.tree
+├── babel.config.js
+├── buildTree.js
+├── cypress.config.js
+├── index.html
+├── jsconfig.json
+├── output.txt
+├── package-lock.json
+├── package.json
+├── public
+|  └── favicon.ico
+├── src
+|  ├── App.vue
+|  ├── assets
+|  |  ├── logo.png
+|  |  ├── styles.css
+|  |  └── styles.scss
+|  ├── components
+|  |  ├── WelcomeItem.vue
+|  |  ├── button-footer.vue
+|  |  ├── card-content.vue
+|  |  ├── header-bar-brand.vue
+|  |  ├── header-bar.vue
+|  |  ├── icons
+|  |  ├── list-header.vue
+|  |  ├── modal.vue
+|  |  ├── nav-bar.vue
+|  |  └── show-popup.vue
+|  ├── main.js
+|  ├── router
+|  |  └── index.js
+|  ├── routes
+|  |  ├── FileUpload.vue
+|  |  ├── GetAbout.vue
+|  |  ├── GetSas.vue
+|  |  ├── GetStatus.vue
+|  |  ├── GoHome.vue
+|  |  ├── ListFiles.vue
+|  |  └── NotFound.vue
+|  └── services
+|     └── ApiServices.js
+├── staticwebapp.config.json
+├── vite.config.js
+└── vitest.config.js
+
+directory: 339 file: 1573
+
+ignored: directory (75)

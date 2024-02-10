@@ -1,0 +1,315 @@
+@import 'bulma/bulma.sass';
+:root {
+    --main-font: Arial, sans-serif;
+    --vue: #7c66f7;
+    --vue-light: #b7afe8;
+    --button-color: var(--vue);
+    --button-hover-color: var(--vue-light);
+    --header-color: rgba(73, 73, 207, 0.788);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --status-fade-duration: 0.5s;
+    --neon-glow-color: var(--vue);
+    --neon-glow-size: 0.5em;
+    --primary: var(--vue);
+    --primary-light: var(--vue-light);
+    --link: var(--primary);
+    --info: var(--primary);
+    --shade-light: var(--vue-light);
+}
+
+.text-input {
+    text-align: center;
+    min-width: 200px;
+    margin: 8px;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#app {
+    width: 100%;
+    max-width: 1440px;
+    min-width: 1080px;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: 1fr auto; */
+    height: 100vh;
+    /* min-height: 100vh; */
+}
+
+.app-container .centered-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+}
+
+.padded-box {
+    margin: 2em;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
+}
+
+.button {
+    color: #fff;
+    background-color: var(--vue);
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    min-width: 160px;
+}
+
+.button:hover {
+    color: #fff;
+    background-color: var(--vue-light);
+}
+
+.status {
+    visibility: hidden;
+    background-color: black;
+    min-width: 250px;
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+}
+
+.status-error,
+.status-success,
+.status-loading {
+    visibility: visible;
+    animation: fadein var(--status-fade-duration), fadeout var(--status-fade-duration) 2.5s;
+}
+
+.status-error {
+    background-color: red;
+}
+
+.status-success {
+    background-color: green;
+}
+
+.status-loading {
+    background-color: gray;
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+.neon-text {
+    text-shadow: 0 0 var(--neon-glow-size) var(--neon-glow-color), 0 0 calc(2 * var(--neon-glow-size)) var(--neon-glow-color), 0 0 calc(4 * var(--neon-glow-size)) var(--neon-glow-color), 0 0 calc(8 * var(--neon-glow-size)) var(--neon-glow-color);
+    text-decoration: none;
+}
+
+.menu-list .router-link-active:hover {
+    color: #fff;
+    background-color: var(--vue-light);
+}
+
+.menu-list .active-link:hover {
+    color: #fff;
+    background-color: var(--vue-light);
+}
+
+.menu-list .router-link-active {
+    color: #fff;
+    background-color: var(--vue);
+}
+
+.about {
+    text-align: center;
+    color: var(--header-color);
+    will-change: filter;
+    transition: filter 500ms;
+}
+
+h1:hover,
+h3:hover {
+    filter: drop-shadow(0 0 0.1em var(--vue));
+}
+
+.not-found {
+    i {
+        font-size: 20px;
+        margin-right: 8px;
+    }
+    .title {
+        letter-spacing: 10px;
+        font-weight: normal;
+        font-size: 24px;
+        text-transform: none;
+    }
+}
+
+.header-bar {
+    width: 100%;
+    height: 4em;
+    background-color: #454545;
+    color: white;
+    display: flex;
+    align-items: center;
+    letter-spacing: 10px;
+    /* justify-content: flex-start; */
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header-bar .neon-text {
+    border: 3px solid transparent;
+    padding: 10px;
+    border-radius: 0%;
+    &:hover {
+        border-right: 3px solid var(--primary);
+        border-left: 3px solid var(--primary);
+    }
+}
+
+.header-spacer {
+    margin-left: auto;
+}
+
+.footer-bar {
+    margin-top: auto;
+    width: 100%;
+    height: 2em;
+    background-color: #454545;
+    color: white;
+    display: block;
+    align-items: center;
+    letter-spacing: 10px;
+    justify-content: baseline;
+    text-align: center;
+    padding: 0 20px;
+    font-size: 12px;
+}
+
+.edit-detail {
+    .input[readonly] {
+        background-color: var(--shade-light);
+    }
+    .input::placeholder {
+        color: #ccc;
+        font-style: italic;
+    }
+}
+
+ul.list {
+    box-shadow: none;
+}
+
+.card {
+    margin-bottom: 2em;
+}
+
+label.label {
+    font-weight: normal;
+}
+
+.menu-label {
+    font-weight: bold;
+    margin-left: 1em;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-size: 20px;
+    color: var(--header-color);
+}
+
+.card-footer button {
+    font-size: 16px;
+    i {
+        margin-right: 10px;
+    }
+    color: #888;
+    &:hover {
+        color: var(--link);
+    }
+}
+
+.modal-card-foot button {
+    display: inline-block;
+    width: 80px;
+}
+
+.modal-card-head,
+.modal-card-body {
+    text-align: center;
+}
+
+.field {
+    margin-bottom: 0.75rem;
+}
+
+.navbar-burger {
+    margin-left: auto;
+}
+
+.button.link {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logo {
+    height: 6em;
+    padding: 1em;
+    will-change: filter;
+    transition: filter 500ms;
+    margin-right: 20px;
+}
+
+.azure-logo:hover {
+    filter: drop-shadow(0 0 1em #58c3f5);
+}
+
+.vite-logo:hover {
+    filter: drop-shadow(0 0 1em #000566);
+}
+
+.vue-logo:hover {
+    filter: drop-shadow(0 0 1em #007c44);
+}
+
+.az-logo:hover {
+    filter: drop-shadow(0 0 0.5em #ffffff);
+}
