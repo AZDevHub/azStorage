@@ -1,42 +1,16 @@
 {
     "$schema": "https://json.schemastore.org/staticwebapp.config.json",
-    "routes": [{
-            "route": "/",
-            "serve": "/index.html",
-            "statusCode": 200
-        },
-        {
-            "route": "/*",
-            "serve": "/index.html",
-            "statusCode": 404
-        }
-    ],
-    "navigationFallback": {
-        "rewrite": "/index.html",
-        "exclude": ["/assets/*"]
-    },
-    "mimeTypes": {
-        ".json": "application/json",
-        ".css": "text/css",
-        ".html": "text/html",
-        ".js": "text/javascript",
-        ".png": "image/png",
-        ".ico": "image/x-icon"
-    },
-    "globalHeaders": {
-        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none';",
-        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
-        "x-content-type-options": "nosniff",
-        "x-frame-options": "SAMEORIGIN",
-        "x-xss-protection": "1; mode=block"
-    },
-    "responseOverrides": {
-        "404": {
-            "rewrite": "/index.html",
-            "statusCode": 200
-        }
-    },
     "platform": {
         "apiRuntime": "node:18"
-    }
+    },
+    "globalHeaders": {
+        "Access-Control-Allow-Origin": "*"
+    },
+    "routes": [{
+        "route": "/*",
+        "allowedMethods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "headers": {
+            "Access-Control-Allow-Origin": "*"
+        }
+    }]
 }
