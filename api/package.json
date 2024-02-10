@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "setup:core-tools": "npm i -g @azure-functions-core-tools --unsafe-perm true",
         "prestart": "npm run build",
         "dev": "npm run build && func start --typescript --verbose",
         "start": "func start",
@@ -16,8 +15,7 @@
     },
     "dependencies": {
         "@azure/functions": "^4.2.0",
-        "@azure/storage-blob": "^12.17.0",
-        "azure-functions-core-tools": "^4.0.5455"
+        "@azure/storage-blob": "^12.17.0"
     },
     "devDependencies": {
         "@types/node": ">=18.0.0",
@@ -31,6 +29,5 @@
     },
     "engines": {
         "node": ">=18.0.0 < 21.0.0"
-    },
-    "main": "dist/src/functions/*.js"
+    }
 }
