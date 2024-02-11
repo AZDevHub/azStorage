@@ -1,9 +1,9 @@
 const { app } = require('@azure/functions');
 const handlers = {
-    status: require('./functions/status'),
-    upload: require('./functions/upload'),
-    sas: require('./functions/sas'),
-    list: require('./functions/list')
+    status: require('./src/functions/status'),
+    upload: require('./src/functions/upload'),
+    sas: require('./src/functions/sas'),
+    list: require('./src/functions/list')
 };
 
 const routes = [
