@@ -18,11 +18,10 @@
 </template>
 
 <script setup lang="js">
-import { ref, onMounted, watch } from 'vue'
+import { ref } from 'vue'
 import apiClient from '../services/ApiServices'
 import ShowPopup from '../components/show-popup.vue'
 
-const file = ref(null)
 const containerName = ref('upload')
 const isUploading = ref(false)
 const fileInput = ref(null)
@@ -32,40 +31,38 @@ const selectFile = () => {
   fileInput.value.click()
 }
 
-const clearFile = () => {
-  file.value = null
-}
-
 const showPopup = (message, type) => {
   popup.value.show(message, type)
 }
 
 const uploadFiles = async (event) => {
-  file.value = event.target.files[0]
-  if (!file.value) {
+  const files = Array.from(event.target.files)
+  if (files.length === 0) {
     showPopup('Please select a file.', 'error')
     return
   }
+
   isUploading.value = true
   showPopup('Uploading...', 'loading')
+
   for (const file of files) {
     try {
-      const formData = new FormData();
-      const uploadContainer = containerName.value || 'upload';
-      formData.append('fileInput', file);
-      const response = await apiClient.fileUpload(uploadContainer, formData);
-      console.log('File uploaded:', response.data);
+      const formData = new FormData()
+      const uploadContainer = containerName.value || 'upload'
+      formData.append('fileInput', file)
+      const response = await apiClient.fileUpload(uploadContainer, formData)
+      console.log('File uploaded:', response.data)
+      showPopup(`File ${file.name} uploaded successfully.`, 'success')
     } catch (error) {
-      console.error('Failed to upload file:', error);
-      showPopup(`Failed to upload ${file.name}. Please try again.`, 'error');
+      console.error('Failed to upload file:', error)
+      showPopup(`Failed to upload ${file.name}. Please try again.`, 'error')
     }
   }
+
+  // Clear the input field to allow re-uploading the same file
+  if (fileInput.value) {
+    fileInput.value.value = ''
+  }
+  isUploading.value = false
 }
-//onMounted(() => {
-//  watch(file, (newVal) => {
-//    if (newVal) {
-//      uploadFile()
-//    }
-//  })
-//})
 </script>
