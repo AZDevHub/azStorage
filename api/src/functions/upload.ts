@@ -12,9 +12,13 @@ export async function postUploadAnyFile(
 ): Promise<HttpResponseInit> {
   context.log(`Http function processed request for url "${request.url}"`);
 
-  const username = request.query.get('username') || 'anonymous';
-  const filename = request.query.get('filename') || 'unknown' + Date.now();
-  const path = `${username}/${filename}`;
+  const container = request.query.get('container') || 'upload';
+  const file = request.query.get('file') || 'unknown';
+
+  if (file) {
+    const fileName = file.originalname.split('.').slice(0, -1).join(`${new Date()}`.split('.').slice(0, -1).join('.'));
+  }
+  const path = `${container}/${fileName}`;
   context.log(path);
 
   // file content must be passed in body
@@ -31,16 +35,16 @@ export async function postUploadAnyFile(
   const sasTokenUrl = await uploadBlob(
     process.env?.Azure_Storage_AccountName as string,
     process.env?.Azure_Storage_AccountKey as string,
-    filename,
-    username,
+    file,
+    container,
     fileContentsBuffer
   );
 
   return {
     jsonBody: {
-      filename,
+      file,
       storageAccountName: process.env.Azure_Storage_AccountName,
-      containername: username,
+      containername: container,
       sasTokenUrl
     }
   };

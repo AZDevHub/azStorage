@@ -7,9 +7,9 @@
         <div class="padded-box">
           <router-view />
         </div>
+        <Popup />
       </main>
     </div>
-    <Popup />
     <FooterBar />
   </div>
 </template>

@@ -41,24 +41,21 @@ const uploadFiles = async (event) => {
     showPopup('Please select a file.', 'error')
     return
   }
-
+  const numFiles = files.length
   isUploading.value = true
   showPopup('Uploading...', 'loading')
 
-  for (const file of files) {
-    try {
-      const formData = new FormData()
       const uploadContainer = containerName.value || 'upload'
-      formData.append('fileInput', file)
-      const response = await apiClient.fileUpload(uploadContainer, formData)
-      console.log('File uploaded:', response.data)
+
+  for (const file of files) {
+      try {
+      const response = await apiClient.fileUpload(uploadContainer, file)
       showPopup(`File ${file.name} uploaded successfully.`, 'success')
     } catch (error) {
       console.error('Failed to upload file:', error)
-      showPopup(`Failed to upload ${file.name}. Please try again.`, 'error')
+      showPopup(`Failed to upload ${file.name}.`, 'error')
+      }
     }
-  }
-
   // Clear the input field to allow re-uploading the same file
   if (fileInput.value) {
     fileInput.value.value = ''
