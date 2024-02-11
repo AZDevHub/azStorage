@@ -50,7 +50,9 @@ h3:hover {
   border-right: 1px solid var(--primary);
   border-left: 1px solid var(--primary);
   background: var(--vue-light);
-  transition: color 0.3s, border-color 0.3s;
+  transition:
+    color 0.3s,
+    border-color 0.3s;
 }
 
 @media (min-width: 1024px) {
@@ -71,7 +73,7 @@ h3:hover {
   }
 
   .item:before {
-    content: " ";
+    content: ' ';
     border-left: 1px solid var(--color-border);
     position: absolute;
     left: 0;
@@ -80,7 +82,7 @@ h3:hover {
   }
 
   .item:after {
-    content: " ";
+    content: ' ';
     border-left: 1px solid var(--color-border);
     position: absolute;
     left: 0;

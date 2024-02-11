@@ -1,3 +1,4 @@
+├── .env
 ├── .eslintrc.cjs
 ├── .github
 │  └── workflows
@@ -15,16 +16,24 @@
 │  ├── .funcignore
 │  ├── .gitignore
 │  ├── .prettierrc
-│  ├── functions
-│  │  ├── list.js
-│  │  ├── sas.js
-│  │  ├── status.js
-│  │  └── upload.js
+│  ├── .vscode
+│  │  ├── extensions.json
+│  │  ├── launch.json
+│  │  ├── settings.json
+│  │  └── tasks.json
 │  ├── host.json
-│  ├── index.js
 │  ├── package.json
 │  ├── README.md
-│  └── test-file.txt
+│  ├── src
+│  │  ├── functions
+│  │  │  ├── list.ts
+│  │  │  ├── sas.ts
+│  │  │  ├── status.ts
+│  │  │  └── upload.ts
+│  │  └── lib
+│  │    └── azure-storage.ts
+│  ├── test-file.txt
+│  └── tsconfig.json
 ├── app.tree
 ├── babel.config.js
 ├── clean.sh
