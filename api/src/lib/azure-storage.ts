@@ -119,7 +119,16 @@ export const listFilesInContainer = async (
     .listBlobsFlat()
     .byPage({ maxPageSize: 20 })) {
     for (const blob of response.segment.blobItems) {
-      data.push(`${containerClient.url}/${blob.name}`);
+      const fileMeta = {
+        DLLink: `<a href=${containerClient.url}/${blob.name}>Link</a>`,
+        fileName: blob.name,
+        createdOn: `${new Date(blob.properties.createdOn).toLocaleDateString()} - ${new Date(  blob.properties.createdOn).toLocaleTimeString()}`,
+        lastModified: `${new Date(blob.properties.lastModified).toLocaleDateString()} - ${new Date(  blob.properties.lastModified).toLocaleTimeString()}`,
+        size: blob.properties.contentLength,
+        etag: blob.properties.etag
+      };
+      data.push(fileMeta);
+      // data.push(`${containerClient.url}/${blob.name}`);
     }
   }
 

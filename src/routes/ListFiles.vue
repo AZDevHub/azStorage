@@ -9,8 +9,12 @@
     >
       <thead>
         <tr>
+          <th>Link</th>
           <th>File Name</th>
-          <th>Download Link</th>
+          <th>Size</th>
+          <th>Created On</th>
+          <th>Last Modified</th>
+          <th>ETag</th>
         </tr>
       </thead>
     </DataTable>
@@ -29,7 +33,7 @@ DataTable.use(DataTablesCore)
 
 const uploadContainer = 'upload'
 const fileList = ref([])
-const columns = [{ data: 'name' }, { data: 'link' }]
+const columns = [{ data: 'DLlink' }, { data: 'fileName' },{ data: 'size'}, { data: 'createdOn' }, { data: 'lastModified' }, { data: 'etag' }]
 
 const popup = ref(null)
 const showPopup = (message, type) => {
@@ -40,10 +44,14 @@ const showPopup = (message, type) => {
 onMounted(async () => {
   try {
     const response = await apiClient.getList(uploadContainer)
-    fileList.value = response.data.list.map((url) => {
-      return {
-        name: url.split('/upload/').pop(),
-        link: `<a href="${url}">Download</a>`
+    fileList.value = response.data.list.map((fileMeta) => {
+    return {
+      DLlink: fileMeta.DLLink,
+      fileName: fileMeta.fileName,
+      size: fileMeta.size,
+      createdOn: fileMeta.createdOn,
+      lastModified: fileMeta.lastModified,
+      etag: fileMeta.etag
       }
     })
   } catch (error) {
@@ -54,6 +62,6 @@ onMounted(async () => {
 </script>
 
 <style>
-@import 'bootstrap';
-@import 'datatables.net-bs5';
+@import "bootstrap";
+@import "datatables.net-bs5";
 </style>

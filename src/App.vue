@@ -22,5 +22,5 @@ import FooterBar from './components/footer-bar.vue'
 </script>
 
 <style lang="scss">
-@import './assets/styles.css';
+@import "./assets/styles.css";
 </style>
