@@ -1,15 +1,17 @@
 import axios from 'axios'
 
-const ApiServer = process.env.Endpoint;
-const accountName = process.env.Azure_Storage_AccountName;
+const Endpoint =
+    import.meta.env.VITE_ENDPOINT;
+const accountName =
+    import.meta.env.VITE_STORAGE_ACCOUNT;
 
 console.log(accountName)
-console.log(ApiServer)
+console.log(Endpoint)
 
 class ApiClient {
     constructor() {
         this.apiClient = axios.create({
-            baseURL: ApiServer ? `${ApiServer}/api` : `https://${accountName}.blob.core.windows.net/api`,
+            baseURL: Endpoint ? `${Endpoint}/api` : `https://${accountName}.blob.core.windows.net/api`,
             withCredentials: false,
             headers: {
                 Accept: 'application/json',
