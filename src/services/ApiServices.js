@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-console.log(accountName)
-console.log(Endpoint)
 
 class ApiClient {
     constructor() {
