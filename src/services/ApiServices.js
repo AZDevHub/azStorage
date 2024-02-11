@@ -1,17 +1,13 @@
 import axios from 'axios'
 
-const Endpoint =
-    import.meta.env.VITE_ENDPOINT;
-const accountName =
-    import.meta.env.VITE_STORAGE_ACCOUNT;
-
 console.log(accountName)
 console.log(Endpoint)
 
 class ApiClient {
     constructor() {
+        const baseURL = `${window.location.origin}/api`;
         this.apiClient = axios.create({
-            baseURL: Endpoint ? `${Endpoint}/api` : `https://${accountName}.blob.core.windows.net/api`,
+            baseURL: baseURL,
             withCredentials: false,
             headers: {
                 Accept: 'application/json',
