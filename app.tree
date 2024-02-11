@@ -1,95 +1,76 @@
+├── .eslintrc.cjs
+├── .github
+│  └── workflows
+│    └── azure-static-web-apps-calm-beach-0558af40f.yml
+├── .gitignore
+├── .prettierrc.json
+├── .vscode
+│  ├── extensions.json
+│  ├── launch.json
+│  ├── settings.json
+│  └── tasks.json
 ├── api
 │  ├── .eslintignore
 │  ├── .eslintrc
 │  ├── .funcignore
 │  ├── .gitignore
 │  ├── .prettierrc
-│  ├── .vscode
-│  │  ├── extensions.json
-│  │  ├── launch.json
-│  │  ├── settings.json
-│  │  └── tasks.json
-│  ├── dist
-│  │  └── src
-│  │    ├── functions
-│  │    │  ├── list.js
-│  │    │  ├── list.js.map
-│  │    │  ├── sas.js
-│  │    │  ├── sas.js.map
-│  │    │  ├── status.js
-│  │    │  ├── status.js.map
-│  │    │  ├── upload.js
-│  │    │  └── upload.js.map
-│  │    └── lib
-│  │      ├── azure-storage.js
-│  │      └── azure-storage.js.map
+│  ├── functions
+│  │  ├── list.js
+│  │  ├── sas.js
+│  │  ├── status.js
+│  │  └── upload.js
 │  ├── host.json
-│  ├── package-lock.json
+│  ├── index.js
 │  ├── package.json
 │  ├── README.md
-│  ├── src
-│  │  ├── functions
-│  │  │  ├── list.ts
-│  │  │  ├── sas.ts
-│  │  │  ├── status.ts
-│  │  │  └── upload.ts
-│  │  └── lib
-│  │    └── azure-storage.ts
-│  ├── test-file.txt
-│  └── tsconfig.json
-├── app
-│  ├── .eslintrc.cjs
-│  ├── .gitignore
-│  ├── .prettierrc.json
-│  ├── app.tree
-│  ├── babel.config.js
-│  ├── cypress.config.js
-│  ├── favicon.ico
-│  ├── index.html
-│  ├── jsconfig.json
-│  ├── package.json
-│  ├── src
-│  │  ├── App.vue
-│  │  ├── assets
-│  │  │  ├── az-logo.png
-│  │  │  ├── azure.svg
-│  │  │  ├── styles.css
-│  │  │  ├── vite.svg
-│  │  │  └── vue.svg
-│  │  ├── components
-│  │  │  ├── button-footer.vue
-│  │  │  ├── card-content.vue
-│  │  │  ├── footer-bar.vue
-│  │  │  ├── header-bar.vue
-│  │  │  ├── icons
-│  │  │  │  ├── IconCommunity.vue
-│  │  │  │  ├── IconDocumentation.vue
-│  │  │  │  ├── IconEcosystem.vue
-│  │  │  │  ├── IconSupport.vue
-│  │  │  │  └── IconTooling.vue
-│  │  │  ├── list-header.vue
-│  │  │  ├── modal.vue
-│  │  │  ├── nav-bar.vue
-│  │  │  ├── show-popup.vue
-│  │  │  └── WelcomeItem.vue
-│  │  ├── main.js
-│  │  ├── router
-│  │  │  └── index.js
-│  │  ├── routes
-│  │  │  ├── FileUpload.vue
-│  │  │  ├── GetAbout.vue
-│  │  │  ├── GetSas.vue
-│  │  │  ├── GetStatus.vue
-│  │  │  ├── GoHome.vue
-│  │  │  ├── ListFiles.vue
-│  │  │  └── NotFound.vue
-│  │  └── services
-│  │    └── ApiServices.js
-│  ├── staticwebapp.config.json
-│  ├── vite.config.js
-│  └── vitest.config.js
+│  └── test-file.txt
 ├── app.tree
+├── babel.config.js
 ├── clean.sh
+├── cypress.config.js
+├── favicon.ico
+├── index.html
+├── jsconfig.json
 ├── package.json
 ├── README.md
-└── staticwebapp.config.json.examples
+├── src
+│  ├── App.vue
+│  ├── assets
+│  │  ├── az-logo.png
+│  │  ├── azure.svg
+│  │  ├── styles.css
+│  │  ├── vite.svg
+│  │  └── vue.svg
+│  ├── components
+│  │  ├── button-footer.vue
+│  │  ├── card-content.vue
+│  │  ├── footer-bar.vue
+│  │  ├── header-bar.vue
+│  │  ├── icons
+│  │  │  ├── IconCommunity.vue
+│  │  │  ├── IconDocumentation.vue
+│  │  │  ├── IconEcosystem.vue
+│  │  │  ├── IconSupport.vue
+│  │  │  └── IconTooling.vue
+│  │  ├── list-header.vue
+│  │  ├── modal.vue
+│  │  ├── nav-bar.vue
+│  │  ├── show-popup.vue
+│  │  └── WelcomeItem.vue
+│  ├── main.js
+│  ├── router
+│  │  └── index.js
+│  ├── routes
+│  │  ├── FileUpload.vue
+│  │  ├── GetAbout.vue
+│  │  ├── GetSas.vue
+│  │  ├── GetStatus.vue
+│  │  ├── GoHome.vue
+│  │  ├── ListFiles.vue
+│  │  └── NotFound.vue
+│  └── services
+│    └── ApiServices.js
+├── staticwebapp.config.json
+├── vite.config.js
+└── vitest.config.js
