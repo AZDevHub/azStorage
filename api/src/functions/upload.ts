@@ -12,15 +12,16 @@ export async function postUploadAnyFile(
 ): Promise<HttpResponseInit> {
   context.log(`Http function processed request for url "${request.url}"`);
 
-  const container = request.query.get('container') || 'upload';
-  const file = request.query.get('file') || 'unknown';
+  const container = request.query.container || 'upload';
+  const file = request.query.file || 'unknown';
 
-  if (file) {
-    const fileName = file.originalname.split('.').slice(0, -1).join(`${new Date()}`.split('.').slice(0, -1).join('.'));
-  }
-  const path = `${container}/${fileName}`;
-  context.log(path);
-
+  const lastDotIndex = file.lastIndexOf('.');
+    const fileName = lastDotIndex > 0 ? file.substring(0, lastDotIndex) : file;
+    const fileExt = lastDotIndex > 0 ? file.substring(lastDotIndex + 1) : '';
+    const newFileName = `${fileName}-${new Date().toISOString().substring(0, 10)}.${fileExt}`;
+    const path = `${container}/${newFileName}`;
+    context.log(path);
+    
   // file content must be passed in body
   const formData = await request.formData();
   const temp: any = formData.get('file');
