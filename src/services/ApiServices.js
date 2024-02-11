@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const ApiServer =
-    import.meta.env.Endpoint;
-const accountName =
-    import.meta.env.Azure_Storage_AccountName;
+const ApiServer = process.env.Endpoint;
+const accountName = process.env.Azure_Storage_AccountName;
 
 console.log(accountName)
 console.log(ApiServer)
