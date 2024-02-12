@@ -3,13 +3,14 @@ import axios from 'axios'
 
 class ApiClient {
     constructor() {
-        const baseURL = `${window.location.origin}/api`;
+        const baseURL = window.location.origin.includes('localhost') ? `${import.meta.env.VITE_ENDPOINT}/api` : `${window.location.origin}/api`;
         this.apiClient = axios.create({
             baseURL: baseURL,
             withCredentials: false,
             headers: {
                 Accept: 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
             }
         })
     }
