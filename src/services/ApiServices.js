@@ -34,7 +34,7 @@ class ApiClient {
 
         const config = {
             headers: { 'Content-Type': 'multipart/form-data' },
-            params: { container: containerName },
+            params: { container: containerName, file: file.name },
         };
         return this.apiClient.post('/upload', formData, config)
     }
