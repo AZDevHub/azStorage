@@ -12,8 +12,8 @@ export async function postUploadAnyFile(
 ): Promise<HttpResponseInit> {
   context.log(`Http function processed request for url "${request.url}"`);
 
-  const container = request.query.container || 'upload';
-  const file = request.query.file || 'unknown';
+  const container = request.query.get('container') || 'upload';
+  const file = request.query.get('file') || 'new-upload';
 
   const lastDotIndex = file.lastIndexOf('.');
     const fileName = lastDotIndex > 0 ? file.substring(0, lastDotIndex) : file;
