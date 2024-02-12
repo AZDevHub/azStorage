@@ -36,7 +36,7 @@ export async function postUploadAnyFile(
   const sasTokenUrl = await uploadBlob(
     process.env?.Azure_Storage_AccountName as string,
     process.env?.Azure_Storage_AccountKey as string,
-    file,
+    newFileName,
     container,
     fileContentsBuffer
   );
