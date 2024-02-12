@@ -41,7 +41,6 @@ const uploadFiles = async (event) => {
     showPopup('Please select a file.', 'error')
     return
   }
-  const numFiles = files.length
   isUploading.value = true
   showPopup('Uploading...', 'loading')
 
@@ -50,6 +49,7 @@ const uploadFiles = async (event) => {
   for (const file of files) {
       try {
       const response = await apiClient.fileUpload(uploadContainer, file)
+      console.log(response)
       showPopup(`File ${file.name} uploaded successfully.`, 'success')
     } catch (error) {
       console.error('Failed to upload file:', error)

@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
+        "setup:core-tools": "npm i -g azure-functions-core-tools@4 --unsafe-perm true",
         "prestart": "npm run build",
         "dev": "npm run build && func start --verbose",
         "start": "func start",
