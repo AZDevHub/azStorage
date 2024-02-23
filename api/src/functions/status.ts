@@ -10,7 +10,7 @@ export async function status(
   context: InvocationContext
 ): Promise<HttpResponseInit> {
   return {
-    jsonBody: { status: 'status ok' }
+    jsonBody: { status: 'API Online' }
   };
 }
 

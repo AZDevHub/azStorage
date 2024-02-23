@@ -6,23 +6,21 @@ import {
 } from '@azure/functions';
 import { generateSASUrl } from '../lib/azure-storage.js';
 
+const accountName = process.env?.Azure_Storage_AccountName;
+const accessKey = process.env?.Azure_Storage_AccountKey;
+
 export async function getGenerateSasToken(
   request: HttpRequest,
   context: InvocationContext
 ): Promise<HttpResponseInit> {
   context.log(`Http function processed request for url "${request.url}"`);
 
-  try {
-    if (
-      !process.env?.Azure_Storage_AccountName ||
-      !process.env?.Azure_Storage_AccountKey
-    ) {
+    if (!accountName || !accessKey) {
       return {
         status: 405,
         jsonBody: 'Missing required app configuration'
       };
     }
-
     const containerName = request.query.get('container') || 'anonymous';
     const fileName = request.query.get('file') || 'nonamefile';
     const permissions = request.query.get('permission') || 'w';
@@ -32,10 +30,10 @@ export async function getGenerateSasToken(
     context.log(`fileName: ${fileName}`);
     context.log(`permissions: ${permissions}`);
     context.log(`timerange: ${timerange}`);
-
+try {
     const url = await generateSASUrl(
-      process.env?.Azure_Storage_AccountName,
-      process.env?.Azure_Storage_AccountKey,
+      accountName,
+      accessKey,
       containerName,
       fileName,
       permissions
