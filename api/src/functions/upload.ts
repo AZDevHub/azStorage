@@ -26,7 +26,7 @@ export async function postUploadAnyFile(
   const formData = await request.formData();
   const uploadedFile = formData.get('file');
 
-  if (!uploadedFile) {
+    if (!(uploadedFile instanceof File)) {
     return {
       status: 405,
       jsonBody: 'File Tranmission Error'
