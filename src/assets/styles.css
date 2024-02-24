@@ -161,6 +161,7 @@
 .menu-list .router-link-active {
   color: #fff;
   background-color: var(--vue);
+  
 }
 
 .about {
@@ -318,4 +319,77 @@ label.label {
 
 .az-logo:hover {
   filter: drop-shadow(0 0 0.5em #ffffff);
+}
+
+@keyframes moving-gradient {
+  /* Start with blue */
+  0% {
+      border-image-source: linear-gradient(270deg, blue, red, yellow, green,blue, red, yellow, green  );
+  }
+  5% {
+      border-image-source: linear-gradient(270deg, red, yellow, green, blue,red, yellow, green, blue  );
+  }
+  10% {
+      border-image-source: linear-gradient(270deg, yellow, green, blue, red,yellow, green, blue, red  );
+  }
+  15% {
+      border-image-source: linear-gradient(270deg, green, blue, red, yellow,green, blue, red, yellow  );
+  }
+  20% {
+      border-image-source: linear-gradient(270deg, blue, red, yellow, green,blue, red, yellow, green  );
+  }
+  25% {
+      border-image-source: linear-gradient(270deg, red, yellow, green, blue,red, yellow, green, blue  );
+  }
+  30% {
+      border-image-source: linear-gradient(270deg, yellow, green, blue, red,yellow, green, blue, red  );
+  }
+  35% {
+      border-image-source: linear-gradient(270deg, green, blue, red, yellow,green, blue, red, yellow  );
+  }
+  40% {
+      border-image-source: linear-gradient(270deg, blue, red, yellow, green,blue, red, yellow, green  );
+  }
+  45% {
+      border-image-source: linear-gradient(270deg, red, yellow, green, blue,red, yellow, green, blue  );
+  }
+  50% {
+      border-image-source: linear-gradient(270deg, yellow, green, blue, red,yellow, green, blue, red  );
+  }
+  55% {
+      border-image-source: linear-gradient(270deg, green, blue, red, yellow,green, blue, red, yellow  );
+  }
+  60% {
+      border-image-source: linear-gradient(270deg, blue, red, yellow, green,blue, red, yellow, green  );
+  }
+  65% {
+      border-image-source: linear-gradient(270deg, red, yellow, green, blue,red, yellow, green, blue  );
+  }
+  70% {
+      border-image-source: linear-gradient(270deg, yellow, green, blue, red,yellow, green, blue, red  );
+  }
+  75% {
+      border-image-source: linear-gradient(270deg, green, blue, red, yellow,green, blue, red, yellow  );
+  }
+  80% {
+      border-image-source: linear-gradient(270deg, blue, red, yellow, green,blue, red, yellow, green  );
+  }
+  85% {
+      border-image-source: linear-gradient(270deg, red, yellow, green, blue,red, yellow, green, blue  );
+  }
+  90% {
+      border-image-source: linear-gradient(270deg, yellow, green, blue, red,yellow, green, blue, red  );
+  }
+  95% {
+      border-image-source: linear-gradient(270deg, green, blue, red, yellow,green, blue, red, yellow  );
+  }
+  100% {
+      border-image-source: linear-gradient(270deg, blue, red, yellow, green,blue, red, yellow, green  );
+  }
+}
+.animated-border {
+  animation: moving-gradient 10s forwards infinite;
+  border: 2px solid transparent;
+  border-radius: 1px;
+  border-image-slice: 1;
 }

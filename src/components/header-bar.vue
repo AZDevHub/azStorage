@@ -1,5 +1,5 @@
 <template>
-  <header class="header-bar">
+  <header class="header-bar animated-border">
     <a href="https://portal.azure.com/" target="_blank">
       <img src="../assets/azure.svg" class="logo azure-logo" alt="Azure Logo" />
     </a>

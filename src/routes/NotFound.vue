@@ -9,6 +9,6 @@ import { onMounted, ref } from 'vue'
 const notFoundText = ref(null)
 
 onMounted(async () => {
-  notFoundText.value = "These aren't the bits you're looking for"
+  notFoundText.value = "These aren't the droids you're looking for"
 })
 </script>
