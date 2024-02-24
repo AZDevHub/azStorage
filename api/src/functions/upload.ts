@@ -10,7 +10,7 @@ function getFileName(file: File) {
   const lastDotIndex = file.name.lastIndexOf('.');
   const fileName = lastDotIndex > 0 ? file.name.substring(0, lastDotIndex) : file.name;
   const fileExt = lastDotIndex > 0 ? file.name.substring(lastDotIndex + 1) : '';
-  return `${fileName}-${new Date().toISOString().substring(0, 10)}.${fileExt}`;
+  return `${fileName}-${new Date().toISOString().replace(/[-:TZ.]/g, '')}.${fileExt}`;
 }
 const accountName = process.env?.Azure_Storage_AccountName;
 const accessKey = process.env?.Azure_Storage_AccountKey;
