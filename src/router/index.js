@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createMemoryHistory } from 'vue-router'
 import NotFound from './../routes/NotFound.vue'
 import GoHome from './../routes/GoHome.vue'
 import FileUpload from './../routes/FileUpload.vue'
@@ -19,7 +19,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createMemoryHistory(),
   routes
 })
 
