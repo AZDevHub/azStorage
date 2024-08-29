@@ -17,3 +17,8 @@
     ></path>
   </svg>
 </template>
+<script>
+export default {
+	name: 'IconTooling',
+}
+</script>
