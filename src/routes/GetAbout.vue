@@ -16,6 +16,6 @@ import { onMounted, ref } from 'vue'
 const welcomeText = ref(null)
 
 onMounted(async () => {
-  welcomeText.value = 'Welcome to Azure Storage APIs'
+  welcomeText.value = 'Welcome to Arena APIs Portal'
 })
 </script>

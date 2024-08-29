@@ -1,5 +1,5 @@
 {
-    "name": "azstorage",
+    "name": "arenapis",
     "version": "0.1.0",
     "private": true,
     "type": "module",
@@ -8,8 +8,6 @@
         "build": "vite build",
         "preview": "vite preview",
         "test:unit": "vitest",
-        "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
-        "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
         "format": "prettier --write src/"
     },
@@ -40,9 +38,10 @@
         "eslint-plugin-vue": "^9.21.1",
         "jsdom": "^24.0.0",
         "prettier": "^3.2.5",
-        "start-server-and-test": "^2.0.3"
+        "start-server-and-test": "^2.0.3",
+        "vite": "^5.4.2"
     },
     "engines": {
-        "node": ">=18.10.3 < 21.0.0"
+        "node": ">=18.10.3 < 23.0.0"
     }
 }
