@@ -1,47 +1,72 @@
 {
-    "name": "arenapis",
-    "version": "0.1.0",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview",
-        "test:unit": "vitest",
-        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-        "format": "prettier --write src/"
-    },
-    "dependencies": {
-        "@azure/storage-blob": "^12.17.0",
-        "axios": "^1.6.7",
-        "bootstrap": "^5.3.2",
-        "bulma": "^0.9.4",
-        "core-js": "^3.35.1",
-        "datatables.net-bs5": "^1.13.10",
-        "datatables.net-vue3": "^2.1.3",
-        "sass": "^1.70.0",
-        "sass-loader": "^14.1.0",
-        "tree-cli": "^0.6.7",
-        "volar-service-vetur": "^0.0.17",
-        "vue": "^3.4.18",
-        "vue-router": "^4.2.5"
-    },
-    "devDependencies": {
-        "@rushstack/eslint-patch": "^1.7.2",
-        "@testing-library/vue": "^8.0.2",
-        "@vitejs/plugin-vue": "^5.0.4",
-        "@vue/eslint-config-prettier": "^9.0.0",
-        "@vue/test-utils": "^2.4.4",
-        "cypress": "^13.6.4",
-        "eslint": "^8.56.0",
-        "eslint-plugin-cypress": "^2.15.1",
-        "eslint-plugin-vue": "^9.21.1",
-        "jsdom": "^24.0.0",
-        "prettier": "^3.2.5",
-        "start-server-and-test": "^2.0.3",
-        "vite": "^5.4.2"
-    },
-    "engines": {
-        "node": ">=18.10.3 < 23.0.0"
-    }
+  "name": "dynamic-rest-api",
+  "version": "1.0.0",
+  "description": "Dynamic REST API server for IBM i with config-driven routes and ODBC support",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "npm run build && SKIP_DB_INIT=true node dist/server.js",
+    "start": "node dist/server.js",
+    "start:dev": "npm run build && SKIP_DB_INIT=true node dist/server.js",
+    "clean": "rm -rf dist",
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@scalar/core": "^0.3.16",
+    "@scalar/express-api-reference": "^0.8.17",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0",
+    "express-basic-auth": "^1.2.1",
+    "express-rate-limit": "^7.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "odbc": "^2.4.9",
+    "passport": "^0.7.0",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "type-fest": "^4.41.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^20.11.0",
+    "@types/passport": "^1.0.16",
+    "@types/passport-http": "^0.3.11",
+    "@types/passport-http-bearer": "^1.0.41",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.10.3 < 23.0.0"
+  },
+  "keywords": [
+    "rest-api",
+    "dynamic-routes",
+    "ibm-i",
+    "as400",
+    "odbc",
+    "sql",
+    "config-driven",
+    "enterprise",
+    "database-connectivity"
+  ],
+  "author": "IBM i REST API Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/dynamic-rest-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/dynamic-rest-api/issues"
+  },
+  "homepage": "https://github.com/your-org/dynamic-rest-api#readme"
 }

@@ -6,5 +6,22 @@
 	"debug.internalConsoleOptions": "neverOpen",
 	"azureFunctions.projectLanguageModel": 4,
 	"azureFunctions.preDeployTask": "npm prune (functions)",
-	"vue3snippets.enable-compile-vue-file-on-did-save-code": true
+	"vue3snippets.enable-compile-vue-file-on-did-save-code": true,
+	"DockerRun.DisableDockerrc": true,
+	"sqltools.connections": [
+		{
+			"connectionMethod": "Connection String",
+			"odbcOptions": {
+				"dbms": "schema.table",
+				"showTblRecords": "DBMS"
+			},
+			"previewLimit": 50,
+			"driver": "SQLTools ODBC Driver",
+			"name": "DEV1",
+			"connectString": "Description=ODBC Pase Environment;Driver=IBM i Access ODBC Driver 64-bit;System=dev1.cistech.net;UserID=ZAWA;Password=zawa123;DefaultLibraries=*LIBL;ForceTranslation=1;DateFormat=4;TimeFormat=0;ExtendedColInfo=1;LazyClose=0;Naming=1;LibraryView=0;HexParserOpt=0;AllowUnsupportedChar=1;CCSID=0;CommitMode=0;ConnectionType=0;TrueAutoCommit=0;TrimCharFields=1;AllowProcCalls=1;DBCSNoTruncError=1",
+			"password": ""
+		}
+	],
+	"generate.camelCase": true,
+	"generate.packageName": "dev.alexzaw"
 }

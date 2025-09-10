@@ -1,0 +1,10 @@
+{
+  "watch": ["dist", "assets"],
+  "ext": "js,json",
+  "ignore": [],
+  "exec": "node dist/server.js",
+  "env": {
+    "NODE_ENV": "development",
+    "SKIP_DB_INIT": "true"
+  }
+}

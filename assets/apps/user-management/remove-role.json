@@ -1,0 +1,50 @@
+{
+  "path": "/usermanagement/api/users/:userId/roles/:roleId",
+  "method": "DELETE",
+  "description": "Remove a role from a user",
+  "authentication": {
+    "required": true,
+    "roles": ["admin", "user_manager"]
+  },
+  "parameters": {
+    "path": {
+      "userId": {
+        "type": "number",
+        "description": "User ID",
+        "required": true
+      },
+      "roleId": {
+        "type": "number",
+        "description": "Role ID to remove",
+        "required": true
+      }
+    },
+    "body": {
+      "reason": {
+        "type": "string",
+        "description": "Reason for role removal (for audit)",
+        "required": false,
+        "maxLength": 255
+      }
+    }
+  },
+  "sql": "DELETE FROM {{userRolesTable}} WHERE user_id = {{userId}} AND role_id = {{roleId}}",
+  "parameterMappings": {
+    "userRolesTable": "config.tables.userRoles",
+    "userId": "path.userId",
+    "roleId": "path.roleId"
+  },
+  "response": {
+    "type": "object",
+    "contentType": "application/json",
+    "statusCode": 204
+  },
+  "validation": {
+    "checkAssignmentExists": true,
+    "preventSystemRoleRemoval": true
+  },
+  "postProcessing": {
+    "auditLog": true,
+    "reason": "body.reason"
+  }
+}
