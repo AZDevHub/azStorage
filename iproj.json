@@ -1,4 +1,0 @@
-{
-  "description": "Rest APIs",
-  "buildCommand": "npm run build"
-}
