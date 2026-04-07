@@ -1,0 +1,51 @@
+{
+  "path": "/usermanagement/api/users/:userId/permissions/:permission",
+  "method": "GET",
+  "description": "Check if a user has a specific permission",
+  "authentication": {
+    "required": true,
+    "roles": ["admin", "user_manager"],
+    "selfAccess": true
+  },
+  "parameters": {
+    "path": {
+      "userId": {
+        "type": "number",
+        "description": "User ID to check",
+        "required": true
+      },
+      "permission": {
+        "type": "string",
+        "description": "Permission name to check (e.g., 'users.create')",
+        "required": true
+      }
+    },
+    "query": {
+      "includeSource": {
+        "type": "boolean",
+        "description": "Include which role(s) grant this permission",
+        "required": false,
+        "default": false
+      }
+    }
+  },
+  "sql": "WITH UserPermissions AS (SELECT DISTINCT p.permission_name, r.role_name, r.priority, ur.expiry_date FROM {{usersTable}} u JOIN {{userRolesTable}} ur ON u.user_id = ur.user_id JOIN {{rolesTable}} r ON ur.role_id = r.role_id JOIN {{rolePermissionsTable}} rp ON r.role_id = rp.role_id JOIN {{permissionsTable}} p ON rp.permission_id = p.permission_id WHERE u.user_id = {{userId}} AND u.status = 'active' AND (ur.expiry_date IS NULL OR ur.expiry_date > CURRENT_TIMESTAMP)) SELECT CASE WHEN EXISTS (SELECT 1 FROM UserPermissions WHERE permission_name = {{permission}}) THEN 'true' ELSE 'false' END AS has_permission, CASE WHEN {{includeSource}} = true THEN LISTAGG(role_name, ',') WITHIN GROUP (ORDER BY priority DESC) ELSE NULL END AS granted_by_roles FROM UserPermissions WHERE permission_name = {{permission}} OR NOT EXISTS (SELECT 1 FROM UserPermissions WHERE permission_name = {{permission}})",
+  "parameterMappings": {
+    "usersTable": "config.tables.users",
+    "userRolesTable": "config.tables.userRoles",
+    "rolesTable": "config.tables.roles",
+    "rolePermissionsTable": "config.tables.rolePermissions",
+    "permissionsTable": "config.tables.permissions",
+    "userId": "path.userId",
+    "permission": "path.permission",
+    "includeSource": "query.includeSource"
+  },
+  "response": {
+    "type": "object",
+    "contentType": "application/json"
+  },
+  "caching": {
+    "enabled": true,
+    "ttl": 300
+  }
+}

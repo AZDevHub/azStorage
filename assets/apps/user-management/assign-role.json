@@ -1,0 +1,60 @@
+{
+  "path": "/usermanagement/api/users/:userId/roles",
+  "method": "POST",
+  "description": "Assign a role to a user",
+  "authentication": {
+    "required": true,
+    "roles": ["admin", "user_manager"]
+  },
+  "parameters": {
+    "path": {
+      "userId": {
+        "type": "number",
+        "description": "User ID",
+        "required": true
+      }
+    },
+    "body": {
+      "roleId": {
+        "type": "number",
+        "description": "Role ID to assign",
+        "required": true
+      },
+      "expiryDate": {
+        "type": "string",
+        "description": "Optional expiry date for the role assignment",
+        "required": false,
+        "format": "date-time"
+      },
+      "reason": {
+        "type": "string",
+        "description": "Reason for role assignment (for audit)",
+        "required": false,
+        "maxLength": 255
+      }
+    }
+  },
+  "sql": "INSERT INTO {{userRolesTable}} (user_id, role_id, assigned_date, assigned_by, expiry_date, reason) SELECT {{userId}}, {{roleId}}, CURRENT_TIMESTAMP, {{currentUser}}, {{expiryDate}}, {{reason}} FROM SYSIBM.SYSDUMMY1 WHERE NOT EXISTS (SELECT 1 FROM {{userRolesTable}} WHERE user_id = {{userId}} AND role_id = {{roleId}} AND (expiry_date IS NULL OR expiry_date > CURRENT_TIMESTAMP))",
+  "parameterMappings": {
+    "userRolesTable": "config.tables.userRoles",
+    "userId": "path.userId",
+    "roleId": "body.roleId",
+    "expiryDate": "body.expiryDate",
+    "reason": "body.reason",
+    "currentUser": "auth.username"
+  },
+  "response": {
+    "type": "object",
+    "contentType": "application/json",
+    "statusCode": 201
+  },
+  "validation": {
+    "checkUserExists": true,
+    "checkRoleExists": true,
+    "preventDuplicates": true
+  },
+  "postProcessing": {
+    "auditLog": true,
+    "notifyUser": true
+  }
+}

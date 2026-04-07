@@ -1,0 +1,66 @@
+{
+  "path": "/usermanagement/api/roles",
+  "method": "POST",
+  "description": "Create a new role",
+  "authentication": {
+    "required": true,
+    "roles": ["admin"]
+  },
+  "parameters": {
+    "body": {
+      "roleName": {
+        "type": "string",
+        "description": "Unique role name",
+        "required": true,
+        "minLength": 3,
+        "maxLength": 50,
+        "pattern": "^[a-zA-Z0-9_-]+$"
+      },
+      "description": {
+        "type": "string",
+        "description": "Role description",
+        "required": true,
+        "maxLength": 255
+      },
+      "permissions": {
+        "type": "array",
+        "description": "Array of permission IDs to assign to this role",
+        "required": false,
+        "items": {
+          "type": "number"
+        }
+      },
+      "isSystem": {
+        "type": "boolean",
+        "description": "Whether this is a system role (cannot be deleted)",
+        "required": false,
+        "default": false
+      },
+      "priority": {
+        "type": "number",
+        "description": "Role priority for conflict resolution (higher wins)",
+        "required": false,
+        "default": 0
+      }
+    }
+  },
+  "sql": "INSERT INTO {{rolesTable}} (role_id, role_name, description, is_system, priority, created_date, created_by, last_modified_date, last_modified_by) VALUES (NEXT VALUE FOR {{rolesSequence}}, {{roleName}}, {{description}}, {{isSystem}}, {{priority}}, CURRENT_TIMESTAMP, {{currentUser}}, CURRENT_TIMESTAMP, {{currentUser}})",
+  "parameterMappings": {
+    "rolesTable": "config.tables.roles",
+    "rolesSequence": "config.sequences.roles",
+    "roleName": "body.roleName",
+    "description": "body.description",
+    "isSystem": "body.isSystem",
+    "priority": "body.priority",
+    "currentUser": "auth.username"
+  },
+  "response": {
+    "type": "object",
+    "contentType": "application/json",
+    "statusCode": 201
+  },
+  "postProcessing": {
+    "returnCreatedId": true,
+    "assignPermissions": "body.permissions"
+  }
+}
